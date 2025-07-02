@@ -1,0 +1,80 @@
+[project]
+name = "langmem"
+version = "0.1.0"
+description = "Layered Memory Architecture for LLM Agents with LangGraph"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    # Core LangGraph and LangChain
+    "langgraph>=0.4.0",
+    "langchain>=0.3.0",
+    "langchain-core>=0.3.0",
+    "langchain-openai>=0.2.0",
+    "langchain-community>=0.3.0",
+    
+    # LLM APIs
+    "openai>=1.0.0",
+    "langchain_milvus>=0.2.1",
+    # ML and embeddings
+    "sentence-transformers>=3.0.0",
+    
+    # Database connectors
+    "chromadb>=0.4.0",
+    
+    # Custom LangGraph extensions
+    "lanngraph-wave-orchestrator>=0.1.7",
+    
+    # Utilities
+    "python-dotenv>=1.0.0",
+    "pydantic>=2.0.0",
+    "typing-extensions>=4.8.0",
+    
+    # HTTP and async
+    "httpx>=0.25.0",
+    "aiofiles>=23.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+    "mypy>=1.5.0",
+    "langgraph-cli[inmem]>=0.1.0",
+]
+
+production = [
+    # Additional production databases
+    "neo4j>=5.0.0",
+    "sqlalchemy>=2.0.0",
+    "alembic>=1.12.0",
+    
+    # Monitoring and logging
+    "structlog>=23.0.0",
+    "prometheus-client>=0.17.0",
+]
+
+[project.scripts]
+langmem = "main:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.black]
+line-length = 88
+target-version = ['py311']
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["LanggraphMemory"]

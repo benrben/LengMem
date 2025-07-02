@@ -1,0 +1,9 @@
+{
+  "dependencies": ["."],
+  "graphs": {
+    "brain": {
+      "path": "./LanggraphMemory/brain.py:graph"
+    }
+  },
+  "env": ".env"
+} 
