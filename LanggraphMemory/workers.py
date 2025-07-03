@@ -40,22 +40,23 @@ def create_memory_search_worker(memory_db: CreateVectorDB, state_class: Type[Bas
     # Create worker function
     def memory_search_worker(state):
         print(f"state: {state}")
+        print(f"state: {state}")
 
-        # Handle both dictionary and object state formats
-        if isinstance(state, dict):
-            messages = state.get("messages", [])
-        else:
-            messages = getattr(state, 'messages', [])
+        # # Handle both dictionary and object state formats
+        # if isinstance(state, dict):
+        #     messages = state.get("messages", [])
+        # else:
+        #     messages = getattr(state, 'messages', [])
         
-        if not messages:
-            return {state_key: {"messages": []}}
+        # if not messages:
+        #     return {state_key: {"messages": []}}
         
-        try:
-            result = memory_db.search(messages[-1].content)
-            return {state_key: {"messages": [*messages, HumanMessage(content=str(result))]}}
-        except Exception as e:
-            logger.error(f"Error in {memory_db.name} search worker: {e}")
-            return {state_key: {"messages": [*messages, HumanMessage(content=f"Memory search error: {str(e)}")]}}
+        # try:
+        #     result = memory_db.search(messages[-1].content)
+        #     return {state_key: {"messages": [*messages, HumanMessage(content=str(result))]}}
+        # except Exception as e:
+        #     logger.error(f"Error in {memory_db.name} search worker: {e}")
+        #     return {state_key: {"messages": [*messages, HumanMessage(content=f"Memory search error: {str(e)}")]}}
     
     service_description = f"Description: {memory_db.description}\nWhen to retrieve: {memory_db.when_to_retrieve}\n"
     # Create WorkerNode
