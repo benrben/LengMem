@@ -1,6 +1,6 @@
 [project]
-name = "langmem"
-version = "1.1.4"
+name = "LengMem"
+version = "1.0.2"
 description = "Layered Memory Architecture for LLM Agents with LangGraph"
 readme = "README.md"
 requires-python = ">=3.11"
