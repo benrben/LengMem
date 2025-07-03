@@ -1,4 +1,4 @@
-from langgraph_wave_orchestrator import WorkerNode
+from langgraph_wave_orchestrator import WaveOrchestrator, WorkerNode
 from langchain_core.messages import BaseMessage
 
 from LanggraphMemory.states import SearchInMemory, GetFromMemory
