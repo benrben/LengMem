@@ -1362,7 +1362,7 @@ requires-dist = [
     { name = "langchain-openai", specifier = ">=0.2.0" },
     { name = "langgraph", specifier = ">=0.4.0" },
     { name = "langgraph-cli", extras = ["inmem"], marker = "extra == 'dev'", specifier = ">=0.1.0" },
-    { name = "lanngraph-wave-orchestrator", specifier = ">=0.1.7" },
+    { name = "lanngraph-wave-orchestrator", editable = "../WaveOrchestrator" },
     { name = "mypy", marker = "extra == 'dev'", specifier = ">=1.5.0" },
     { name = "neo4j", marker = "extra == 'production'", specifier = ">=5.0.0" },
     { name = "openai", specifier = ">=1.0.0" },
@@ -1400,16 +1400,20 @@ wheels = [
 [[package]]
 name = "lanngraph-wave-orchestrator"
 version = "0.1.7"
-source = { registry = "https://pypi.org/simple" }
+source = { editable = "../WaveOrchestrator" }
 dependencies = [
     { name = "langchain-core" },
     { name = "langgraph" },
     { name = "pydantic" },
     { name = "python-dotenv" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/13/20/105a5f69f80179c062c0d4425ef2b1e9ea913f3404f4069e2668bc0fba0e/lanngraph_wave_orchestrator-0.1.7.tar.gz", hash = "sha256:86f422669d1ef51b55a1b26a1a51a68bd12948b20c3df87de87f8bb92c4afa8a", size = 47631, upload-time = "2025-07-01T22:05:25.07Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/50/ae/aedacbbc29109e6860f854fe06c4813f9e043d9d4911e7d3ceee8e584949/lanngraph_wave_orchestrator-0.1.7-py3-none-any.whl", hash = "sha256:1fdd57f9382a03689745d33df0cd0b49bc9bf08e4052bb65621f94610e12b3cb", size = 8316, upload-time = "2025-07-01T22:05:24.008Z" },
+
+[package.metadata]
+requires-dist = [
+    { name = "langchain-core", specifier = ">=0.1.0" },
+    { name = "langgraph", specifier = ">=0.1.0" },
+    { name = "pydantic", specifier = ">=2.0.0" },
+    { name = "python-dotenv", specifier = ">=1.0.0" },
 ]
 
 [[package]]

@@ -4,18 +4,18 @@ from langchain_core.messages import BaseMessage
 from LanggraphMemory.states import SearchInMemory, GetFromMemory
 from LanggraphMemory.orchestrators import (
     create_search_in_memory_brain, 
-    create_get_from_memory_brain, 
+    create_learn_brain, 
     create_main_brain
 )
 
 # Create brain instances
 search_in_memory_brain = create_search_in_memory_brain()
-get_from_memory_brain = create_get_from_memory_brain()
+learn = create_learn_brain()
 brain = create_main_brain()
 
 # Compile the brain graphs
 search_in_memory_brain_graph = search_in_memory_brain.compile()
-get_from_memory_brain_graph = get_from_memory_brain.compile()
+learn_information_graph = learn.compile()
 
 
 def search_in_memory(state):
@@ -25,10 +25,10 @@ def search_in_memory(state):
     return {"search": result}
 
 
-def get_from_memory(state):
+def learn_and_store_in_memory(state):
     """Get from memory using the configured brain."""
     print(f"Get state: {state}")
-    result = get_from_memory_brain_graph.invoke({"messages": state.messages})
+    result = learn_information_graph.invoke({"messages": state.messages})
     print(f"Get result: {result}")
     return {"get": result}
 
@@ -43,11 +43,11 @@ search_worker = WorkerNode(
 )
 
 get_worker = WorkerNode(
-    name="get_from_memory",
-    function=get_from_memory,
+    name="learn_and_store_in_memory",
+    function=learn_and_store_in_memory,
     model=GetFromMemory,
     state_placeholder="get",
-    description="Get from memory",
+    description="Learn and store in memory",
 )
 
 # Add workers to main brain and compile

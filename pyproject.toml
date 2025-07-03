@@ -11,24 +11,19 @@ dependencies = [
     "langchain-core>=0.3.0",
     "langchain-openai>=0.2.0",
     "langchain-community>=0.3.0",
-    
     # LLM APIs
     "openai>=1.0.0",
     "langchain_milvus>=0.2.1",
     # ML and embeddings
     "sentence-transformers>=3.0.0",
-    
     # Database connectors
     "chromadb>=0.4.0",
-    
     # Custom LangGraph extensions
     "lanngraph-wave-orchestrator>=0.1.7",
-    
     # Utilities
     "python-dotenv>=1.0.0",
     "pydantic>=2.0.0",
     "typing-extensions>=4.8.0",
-    
     # HTTP and async
     "httpx>=0.25.0",
     "aiofiles>=23.0.0",
@@ -78,3 +73,6 @@ disallow_untyped_defs = true
 
 [tool.hatch.build.targets.wheel]
 packages = ["LanggraphMemory"]
+
+[tool.uv.sources]
+lanngraph-wave-orchestrator = { path = "../WaveOrchestrator", editable = true }

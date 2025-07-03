@@ -57,13 +57,14 @@ def create_memory_search_worker(memory_db: CreateVectorDB, state_class: Type[Bas
             logger.error(f"Error in {memory_db.name} search worker: {e}")
             return {state_key: {"messages": [*messages, HumanMessage(content=f"Memory search error: {str(e)}")]}}
     
+    service_description = f"Description: {memory_db.description}\nWhen to retrieve: {memory_db.when_to_retrieve}\n"
     # Create WorkerNode
     worker = WorkerNode(
         name=f"{memory_db.name}_search",
         function=memory_search_worker,
         model=state_class,
         state_placeholder=state_key,
-        description=f"GET/RETRIEVE data from {memory_db.description}",
+        description=service_description,
     )
     
     return worker
@@ -114,13 +115,14 @@ def create_memory_push_worker(memory_db: CreateVectorDB, state_class: Type[BaseM
             logger.error(f"Error in {memory_db.name} push worker: {e}")
             return {state_key: {"messages": [*messages, HumanMessage(content=f"Memory store error: {str(e)}")]}}
     
+    service_description = f"Description: {memory_db.description}\nWhen to store: {memory_db.when_to_store}\n"
     # Create WorkerNode
     worker = WorkerNode(
         name=f"{memory_db.name}_push",
         function=memory_push_worker,
         model=state_class,
         state_placeholder=state_key,
-        description=f"PUSH/STORE data into {memory_db.description}",
+        description=service_description,
     )
     
     return worker
@@ -141,13 +143,17 @@ memory_search_workers = {
 
 # Create all memory push workers
 memory_push_workers = {
-    'sensory_buffer_push': create_memory_push_worker(sensory_buffer, SensoryBufferState, 'sb_push'),
-    'short_term_memory_push': create_memory_push_worker(short_term_memory, ShortTermMemoryState, 'stm_push'),
-    'episodic_memory_push': create_memory_push_worker(episodic_memory, EpisodicMemoryState, 'em_push'),
-    'semantic_memory_push': create_memory_push_worker(semantic_memory, SemanticMemoryState, 'sm_push'),
-    'procedural_memory_push': create_memory_push_worker(procedural_memory, ProceduralMemoryState, 'pm_push'),
-    'personalization_memory_push': create_memory_push_worker(personalization_memory, PersonalizationMemoryState, 'pers_push'),
-    'emotional_memory_push': create_memory_push_worker(emotional_memory, EmotionalMemoryState, 'emo_push'),
-    'social_memory_push': create_memory_push_worker(social_memory, SocialMemoryState, 'soc_push'),
-    'planning_memory_push': create_memory_push_worker(planning_memory, PlanningMemoryState, 'plan_push'),
-} 
+    'sensory_buffer_push_worker_1': create_memory_push_worker(sensory_buffer, SensoryBufferState, 'sb_push'),
+    'short_term_memory_push_worker_1': create_memory_push_worker(short_term_memory, ShortTermMemoryState, 'stm_push'),
+    'episodic_memory_push_worker_1': create_memory_push_worker(episodic_memory, EpisodicMemoryState, 'em_push'),
+    'semantic_memory_push_worker_1': create_memory_push_worker(semantic_memory, SemanticMemoryState, 'sm_push'),
+    'procedural_memory_push_worker_1': create_memory_push_worker(procedural_memory, ProceduralMemoryState, 'pm_push'),
+    'personalization_memory_push_worker_1': create_memory_push_worker(personalization_memory, PersonalizationMemoryState, 'pers_push'),
+    'emotional_memory_push_worker_1': create_memory_push_worker(emotional_memory, EmotionalMemoryState, 'emo_push'),
+    'social_memory_push_worker_1': create_memory_push_worker(social_memory, SocialMemoryState, 'soc_push'),
+    'planning_memory_push_worker_1': create_memory_push_worker(planning_memory, PlanningMemoryState, 'plan_push'),
+}
+
+# Update the WorkerNode names to match the dictionary keys
+for key, worker in memory_push_workers.items():
+    worker.name = key 

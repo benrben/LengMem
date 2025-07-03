@@ -9,3 +9,5 @@ wheels/
 .env
 # Virtual environments
 .venv
+*.db
+*.db.*

@@ -29,7 +29,7 @@ def create_search_in_memory_brain():
     return brain
 
 
-def create_get_from_memory_brain():
+def create_learn_brain():
     """Create and configure the get from memory brain orchestrator."""
     brain = WaveOrchestrator(
         llm=create_llm_openai(),
