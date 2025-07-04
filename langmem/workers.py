@@ -4,13 +4,13 @@ from pydantic import BaseModel
 from typing import Type
 import logging
 
-from LanggraphMemory.vectorDB import CreateVectorDB
-from LanggraphMemory.dbs import (
+from langmem.vectorDB import CreateVectorDB
+from langmem.dbs import (
     sensory_buffer, short_term_memory, episodic_memory, semantic_memory,
     procedural_memory, personalization_memory, emotional_memory, 
     social_memory, planning_memory
 )
-from LanggraphMemory.states import (
+from langmem.states import (
     SensoryBufferState, ShortTermMemoryState, EpisodicMemoryState, 
     SemanticMemoryState, ProceduralMemoryState, PersonalizationMemoryState,
     EmotionalMemoryState, SocialMemoryState, PlanningMemoryState

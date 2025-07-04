@@ -1,4 +1,4 @@
-from LanggraphMemory.vectorDB import CreateVectorDB
+from langmem.vectorDB import CreateVectorDB
 
 # Memory database configurations
 MEMORY_CONFIGS = {

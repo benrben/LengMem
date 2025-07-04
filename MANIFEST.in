@@ -1,0 +1,34 @@
+include README.md
+include LICENSE
+include CONTRIBUTING.md
+include pyproject.toml
+include setup.py
+include langmem/py.typed
+
+# Include examples
+recursive-include examples *.py
+recursive-include examples *.md
+
+# Include package data
+recursive-include langmem *.py
+recursive-include langmem *.pyi
+
+# Exclude development files
+exclude .env
+exclude .env.example
+exclude .gitignore
+exclude .python-version
+exclude langgraph.json
+exclude uv.lock
+
+# Exclude directories
+prune .git
+prune .github
+prune .venv
+prune __pycache__
+prune .pytest_cache
+prune .mypy_cache
+prune .langgraph_api
+prune vector_db
+prune tests
+prune docs 

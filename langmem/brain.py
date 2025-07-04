@@ -1,8 +1,8 @@
 from langgraph_wave_orchestrator import WaveOrchestrator, WorkerNode
 from langchain_core.messages import BaseMessage
 
-from LanggraphMemory.states import SearchInMemory, GetFromMemory
-from LanggraphMemory.orchestrators import (
+from langmem.states import SearchInMemory, GetFromMemory
+from langmem.orchestrators import (
     create_search_in_memory_brain, 
     create_learn_brain, 
     create_main_brain

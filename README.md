@@ -1,99 +1,99 @@
-# LangMem 🧠
+# LangMem SDK 🧠
 
-**Layered Memory Architecture for LLM Agents with LangGraph**
+**A Python SDK for Layered Memory Architecture with LangGraph**
 
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
-[![LangGraph](https://img.shields.io/badge/LangGraph-0.4.0+-green.svg)](https://langchain-ai.github.io/langgraph/)
+[![PyPI version](https://badge.fury.io/py/langmem.svg)](https://badge.fury.io/py/langmem)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Downloads](https://static.pepy.tech/badge/langmem)](https://pepy.tech/project/langmem)
 
-LangMem is an advanced memory architecture system for Large Language Model (LLM) agents that implements multiple types of memory systems similar to human cognitive architecture. Built on top of LangGraph, it provides sophisticated memory management capabilities for AI agents with layered memory storage, retrieval, and management.
+LangMem is a Python SDK that provides a sophisticated memory architecture for Large Language Model (LLM) agents, implementing multiple types of memory systems that mimic human cognitive architecture. Built on top of LangGraph, it enables AI agents to have human-like memory capabilities including sensory buffer, short-term memory, episodic memory, semantic memory, and more.
 
-## 🚀 Features
+## 🚀 Quick Start
 
-### Multi-Layered Memory Architecture
-- **Sensory Buffer**: Immediate perception and input processing
-- **Short-Term Memory**: Temporary information storage
-- **Episodic Memory**: Personal experiences and events
-- **Semantic Memory**: General knowledge and facts
-- **Procedural Memory**: Skills and learned procedures
-- **Personalization Memory**: User-specific preferences and patterns
-- **Emotional Memory**: Emotional associations and responses
-- **Social Memory**: Social interactions and relationships
-- **Planning Memory**: Goal-oriented planning and future intentions
+### Installation
 
-### Advanced Features
-- **Vector Database Storage**: Powered by Milvus with OpenAI embeddings
-- **TTL Support**: Time-to-live functionality for temporary memories
-- **Hierarchical Brain System**: Multi-level orchestration with specialized brains
-- **LangGraph Integration**: Native support for complex agent workflows
-- **Asynchronous Operations**: High-performance async memory operations
-- **Flexible Search**: Semantic similarity search across memory layers
-
-## 🏗️ Architecture
-
-```mermaid
-graph TD
-    A[Main Brain] --> B[Search Brain]
-    A --> C[Get Brain]
-    B --> D[Memory Search Workers]
-    C --> E[Memory Push Workers]
-    D --> F[Vector Database]
-    E --> F
-    F --> G[Sensory Buffer]
-    F --> H[Short-Term Memory]
-    F --> I[Episodic Memory]
-    F --> J[Semantic Memory]
-    F --> K[Procedural Memory]
-    F --> L[Personalization Memory]
-    F --> M[Emotional Memory]
-    F --> N[Social Memory]
-    F --> O[Planning Memory]
+```bash
+pip install langmem
 ```
 
-### Core Components
+### Basic Usage
 
-1. **Brain Module** (`brain.py`): Main orchestration layer
-2. **Vector Database** (`vectorDB.py`): Persistent storage with Milvus
-3. **Memory States** (`states.py`): Pydantic models for different memory types
-4. **Orchestrators** (`orchestrators.py`): Brain configuration and management
-5. **Workers** (`workers.py`): Specialized workers for memory operations
-6. **LLM Integration** (`llm.py`): OpenAI integration and model management
+```python
+from langmem import LangMemSDK
 
-## 📦 Installation
+# Initialize the SDK
+sdk = LangMemSDK()
+
+# Process a message through the brain
+result = sdk.process_message("Remember that I love coffee in the morning")
+
+# Search for information
+results = sdk.search_memory("coffee", memory_type="semantic")
+
+# Add information to memory
+sdk.add_memory("Python is a programming language", memory_type="semantic")
+```
+
+## 📋 Table of Contents
+
+- [Features](#features)
+- [Installation](#installation)
+- [Quick Start](#quick-start)
+- [API Reference](#api-reference)
+- [Memory Types](#memory-types)
+- [Examples](#examples)
+- [CLI Usage](#cli-usage)
+- [Configuration](#configuration)
+- [Contributing](#contributing)
+- [License](#license)
+
+## ✨ Features
+
+### Multi-Layered Memory Architecture
+- **🧠 Sensory Buffer**: Immediate perception and input processing
+- **⚡ Short-Term Memory**: Temporary information storage and manipulation
+- **📚 Episodic Memory**: Personal experiences and events with context
+- **🔍 Semantic Memory**: General knowledge and facts
+- **🎯 Procedural Memory**: Skills and learned procedures
+- **👤 Personalization Memory**: User-specific preferences and patterns
+- **💭 Emotional Memory**: Emotional associations and responses
+- **🤝 Social Memory**: Social interactions and relationships
+- **📋 Planning Memory**: Goal-oriented planning and future intentions
+
+### SDK Capabilities
+- **Simple API**: Easy-to-use Python interface
+- **Vector Storage**: Powered by Milvus with OpenAI embeddings
+- **TTL Support**: Time-to-live functionality for temporary memories
+- **Async Operations**: High-performance asynchronous operations
+- **Flexible Search**: Semantic similarity search across memory layers
+- **CLI Tools**: Command-line interface for easy interaction
+
+## 🛠️ Installation
 
 ### Prerequisites
 - Python 3.11 or higher
 - OpenAI API key
 
-### Using UV (Recommended)
+### Install from PyPI
 
 ```bash
-# Clone the repository
-git clone <repository-url>
-cd LangMem
-
-# Install with UV
-uv sync
+pip install langmem
 ```
 
-### Using Pip
+### Install from Source
 
 ```bash
-# Clone the repository
-git clone <repository-url>
-cd LangMem
-
-# Install dependencies
+git clone https://github.com/langmem/langmem.git
+cd langmem
 pip install -e .
 ```
 
 ### Development Installation
 
 ```bash
-# Install with development dependencies
-uv sync --group dev
-
-# Or with pip
+git clone https://github.com/langmem/langmem.git
+cd langmem
 pip install -e ".[dev]"
 ```
 
@@ -101,216 +101,316 @@ pip install -e ".[dev]"
 
 ### Environment Variables
 
-Create a `.env` file in the project root:
+Create a `.env` file in your project root:
 
 ```env
 OPENAI_API_KEY=your_openai_api_key_here
+EMBEDDING_MODEL=text-embedding-3-large
+VECTOR_DB_PATH=./vector_db
 ```
 
-### LangGraph Configuration
+### Optional Configuration
 
-The project uses `langgraph.json` for configuration:
+```env
+VECTOR_DB_INDEX_TYPE=FLAT
+VECTOR_DB_METRIC_TYPE=L2
+ENABLE_DYNAMIC_FIELDS=true
+MAX_SEARCH_RESULTS=5
+```
 
-```json
-{
-  "dependencies": ["."],
-  "graphs": {
-    "brain": {
-      "path": "./LanggraphMemory/brain.py:graph"
+## 📖 API Reference
+
+### LangMemSDK
+
+The main SDK class providing high-level access to all memory functionality.
+
+```python
+from langmem import LangMemSDK
+
+sdk = LangMemSDK()
+```
+
+#### Methods
+
+##### `process_message(message: str) -> dict`
+Process a message through the main brain orchestrator.
+
+```python
+result = sdk.process_message("Remember my favorite color is blue")
+```
+
+##### `search_memory(query: str, memory_type: str = "semantic", k: int = 5) -> list`
+Search a specific memory type for relevant information.
+
+```python
+results = sdk.search_memory("favorite color", memory_type="personalization")
+```
+
+##### `add_memory(content: str, memory_type: str = "semantic", metadata: dict = None)`
+Add content to a specific memory type.
+
+```python
+sdk.add_memory("Paris is the capital of France", memory_type="semantic")
+```
+
+##### `list_memory_types() -> list`
+List all available memory types.
+
+```python
+memory_types = sdk.list_memory_types()
+# Returns: ['sensory_buffer', 'short_term_memory', 'episodic_memory', ...]
+```
+
+##### `get_memory_info(memory_type: str) -> dict`
+Get detailed information about a specific memory type.
+
+```python
+info = sdk.get_memory_info("semantic_memory")
+```
+
+### CreateVectorDB
+
+Create and manage individual vector databases for specific memory types.
+
+```python
+from langmem import CreateVectorDB
+
+# Create a custom memory database
+memory = CreateVectorDB(
+    name="my_custom_memory",
+    description="Custom memory for specific use case",
+    ttl_seconds=3600  # 1 hour TTL
+)
+
+# Add documents
+memory.add_document("Important information", metadata={"priority": "high"})
+
+# Search documents
+results = memory.search("important", k=3)
+```
+
+### Direct Memory Access
+
+Access pre-configured memory databases directly:
+
+```python
+from langmem import semantic_memory, episodic_memory, short_term_memory
+
+# Add to semantic memory
+semantic_memory.add_document("Machine learning is a subset of AI")
+
+# Search episodic memory
+results = episodic_memory.search("yesterday meeting")
+
+# Search short-term memory
+recent_results = short_term_memory.search("current task")
+```
+
+## 🧠 Memory Types
+
+| Memory Type | Description | TTL | Use Cases |
+|-------------|-------------|-----|-----------|
+| **Sensory Buffer** | Immediate sensory input processing | 5 minutes | Real-time perception, immediate reactions |
+| **Short-Term Memory** | Active working memory | 2 hours | Current conversations, temporary data |
+| **Episodic Memory** | Personal experiences and events | 1 week | User interactions, contextual experiences |
+| **Semantic Memory** | General knowledge and facts | 30 days | Facts, concepts, learned information |
+| **Procedural Memory** | Skills and procedures | 90 days | How-to knowledge, step-by-step processes |
+| **Personalization** | User preferences and traits | 1 year | User customization, personal preferences |
+| **Emotional Memory** | Emotional associations | 30 days | Sentiment, emotional context |
+| **Social Memory** | Social interactions | 90 days | Relationships, social context |
+| **Planning Memory** | Future intentions and goals | 2 weeks | Task planning, goal management |
+
+## 💡 Examples
+
+### Basic Memory Operations
+
+```python
+from langmem import LangMemSDK
+
+sdk = LangMemSDK()
+
+# Store user preferences
+sdk.add_memory("I prefer dark mode in applications", memory_type="personalization")
+
+# Store factual information
+sdk.add_memory("The Earth orbits the Sun", memory_type="semantic")
+
+# Store a personal experience
+sdk.add_memory("Had a great meeting with the team today", memory_type="episodic")
+
+# Search for information
+preferences = sdk.search_memory("interface preferences", memory_type="personalization")
+facts = sdk.search_memory("Earth", memory_type="semantic")
+experiences = sdk.search_memory("team meeting", memory_type="episodic")
+```
+
+### Advanced Usage with Custom Memory
+
+```python
+from langmem import CreateVectorDB
+import json
+
+# Create a specialized memory for a specific domain
+project_memory = CreateVectorDB(
+    name="project_alpha",
+    description="Memory for Project Alpha specifications and decisions",
+    ttl_seconds=86400 * 30  # 30 days
+)
+
+# Add structured information
+project_memory.add_document(
+    "Project Alpha uses microservices architecture with Python and FastAPI",
+    metadata={
+        "project": "alpha",
+        "category": "architecture",
+        "importance": "high",
+        "date": "2024-01-15"
     }
-  },
-  "env": ".env"
-}
-```
-
-## 🎯 Usage
-
-### Basic Example
-
-```python
-from LanggraphMemory import CreateVectorDB, create_llm_openai
-from LanggraphMemory.brain import graph
-
-# Initialize the main brain
-brain_graph = graph
-
-# Process a message through the memory system
-result = brain_graph.invoke({
-    "messages": [{"role": "user", "content": "Remember that I like coffee"}]
-})
-
-print(result)
-```
-
-### Memory Operations
-
-#### Storing Information
-
-```python
-from LanggraphMemory.vectorDB import CreateVectorDB
-
-# Create a semantic memory database
-semantic_memory = CreateVectorDB(
-    name="semantic_memory",
-    description="General knowledge and facts",
-    ttl_seconds=86400  # 24 hours TTL
 )
 
-# Add a document to memory
-semantic_memory.add_document(
-    document_context="Python is a programming language",
-    metadata={"category": "programming", "importance": "high"}
-)
-```
-
-#### Searching Memory
-
-```python
-# Search for relevant information
-results = semantic_memory.search(
-    query="programming languages",
-    k=5  # Return top 5 results
-)
-
+# Search with context
+results = project_memory.search("architecture decisions", k=3)
 for result in results:
     print(f"Content: {result.page_content}")
     print(f"Metadata: {result.metadata}")
 ```
 
-### Advanced Usage
-
-#### Custom Memory Workers
+### Integration with LangGraph
 
 ```python
-from langgraph_wave_orchestrator import WorkerNode
-from LanggraphMemory.states import SemanticMemoryState
+from langmem import brain_graph
+from langchain_core.messages import HumanMessage
 
-def custom_memory_processor(state):
-    # Custom memory processing logic
-    return {"processed": True}
+# Use the brain graph directly
+response = brain_graph.invoke({
+    "messages": [HumanMessage(content="What do you know about machine learning?")]
+})
 
-custom_worker = WorkerNode(
-    name="custom_processor",
-    function=custom_memory_processor,
-    model=SemanticMemoryState,
-    state_placeholder="custom",
-    description="Custom memory processing"
+print(response)
+```
+
+### Async Operations
+
+```python
+import asyncio
+from langmem import LangMemSDK
+
+async def process_multiple_messages():
+    sdk = LangMemSDK()
+    
+    messages = [
+        "I enjoy hiking on weekends",
+        "Python is my favorite programming language",
+        "The meeting is scheduled for tomorrow at 3 PM"
+    ]
+    
+    for message in messages:
+        result = sdk.process_message(message)
+        print(f"Processed: {message}")
+        print(f"Result: {result}")
+
+# Run async function
+asyncio.run(process_multiple_messages())
+```
+
+## 🖥️ CLI Usage
+
+LangMem provides a command-line interface for easy interaction:
+
+### Basic Commands
+
+```bash
+# Show version
+langmem --version
+
+# Process a message
+langmem process "Remember that I like coffee"
+
+# Search memory
+langmem search "coffee" --memory personalization --limit 3
+
+# Add to memory
+langmem add "Python is a programming language" --memory semantic
+
+# List all memory types
+langmem list-memories
+
+# Get memory type information
+langmem info semantic_memory
+```
+
+### Advanced CLI Usage
+
+```bash
+# Add with metadata
+langmem add "Important project update" --memory episodic --metadata '{"priority": "high", "date": "2024-01-15"}'
+
+# Search specific memory type
+langmem search "project" --memory episodic --limit 5
+
+# Get detailed memory information
+langmem info procedural_memory
+```
+
+## 🔧 Configuration
+
+### Environment Variables
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `OPENAI_API_KEY` | Required | OpenAI API key for embeddings and LLM |
+| `EMBEDDING_MODEL` | `text-embedding-3-large` | OpenAI embedding model |
+| `VECTOR_DB_PATH` | `./vector_db` | Path to store vector databases |
+| `VECTOR_DB_INDEX_TYPE` | `FLAT` | Milvus index type |
+| `VECTOR_DB_METRIC_TYPE` | `L2` | Distance metric for similarity search |
+| `ENABLE_DYNAMIC_FIELDS` | `true` | Enable dynamic fields in vector DB |
+| `MAX_SEARCH_RESULTS` | `5` | Default number of search results |
+
+### Custom Configuration
+
+```python
+from langmem import CreateVectorDB
+import os
+
+# Override environment variables
+os.environ['EMBEDDING_MODEL'] = 'text-embedding-ada-002'
+os.environ['MAX_SEARCH_RESULTS'] = '10'
+
+# Create memory with custom settings
+memory = CreateVectorDB(
+    name="custom_memory",
+    description="Custom configured memory",
+    ttl_seconds=7200  # 2 hours
 )
 ```
 
-#### Brain Orchestration
+## 🤝 Contributing
 
-```python
-from LanggraphMemory.orchestrators import create_main_brain
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
 
-# Create and configure a custom brain
-brain = create_main_brain()
-brain.add_node(custom_worker)
-compiled_brain = brain.compile()
+### Development Setup
 
-# Use the custom brain
-result = compiled_brain.invoke({"messages": [...]})
+```bash
+git clone https://github.com/langmem/langmem.git
+cd langmem
+pip install -e ".[dev]"
 ```
-
-## 🧪 Development
 
 ### Running Tests
 
 ```bash
-# Run all tests
 pytest
-
-# Run with coverage
-pytest --cov=LanggraphMemory
-
-# Run specific test file
-pytest tests/test_memory.py
 ```
 
 ### Code Quality
 
 ```bash
-# Format code
-black LanggraphMemory/
-
-# Lint code
-ruff check LanggraphMemory/
-
-# Type checking
-mypy LanggraphMemory/
+black langmem/
+ruff check langmem/
+mypy langmem/
 ```
 
-### Local Development
-
-```bash
-# Start the LangGraph development server
-langgraph dev
-
-# Run the brain graph locally
-langgraph run --graph brain
-```
-
-## 📊 Memory Types
-
-| Memory Type | Purpose | TTL Support | Use Cases |
-|-------------|---------|-------------|-----------|
-| Sensory Buffer | Immediate input processing | ✅ | Real-time perception |
-| Short-Term | Temporary working memory | ✅ | Active conversations |
-| Episodic | Personal experiences | ❌ | User interactions |
-| Semantic | General knowledge | ❌ | Facts and concepts |
-| Procedural | Skills and procedures | ❌ | How-to knowledge |
-| Personalization | User preferences | ❌ | Customization |
-| Emotional | Emotional associations | ❌ | Sentiment analysis |
-| Social | Social relationships | ❌ | User relationships |
-| Planning | Future intentions | ✅ | Goal management |
-
-## 🛠️ API Reference
-
-### Core Classes
-
-#### `CreateVectorDB`
-
-```python
-class CreateVectorDB:
-    def __init__(self, name: str, description: str, ttl_seconds: int = None)
-    def add_document(self, document_context: str, metadata: dict = None)
-    def search(self, query: str, k: int = 5) -> List[Document]
-```
-
-#### Memory State Models
-
-All memory states inherit from Pydantic BaseModel:
-
-```python
-class MemoryState(BaseModel):
-    messages: list[BaseMessage] = Field(default_factory=list)
-```
-
-### Functions
-
-- `create_llm_openai()`: Create OpenAI LLM instance
-- `create_llm_openai_base()`: Create base OpenAI LLM
-- `create_search_in_memory_brain()`: Initialize search brain
-- `create_get_from_memory_brain()`: Initialize retrieval brain
-- `create_main_brain()`: Initialize main orchestrator brain
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-### Development Guidelines
-
-- Follow PEP 8 style guidelines
-- Add type hints to all functions
-- Write comprehensive tests
-- Update documentation for new features
-- Use conventional commit messages
-
-## 📝 License
+## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
@@ -323,10 +423,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-- 📧 Email: [your-email@example.com]
-- 🐛 Issues: [GitHub Issues](https://github.com/your-username/LangMem/issues)
-- 💬 Discussions: [GitHub Discussions](https://github.com/your-username/LangMem/discussions)
+- 🐛 **Issues**: [GitHub Issues](https://github.com/langmem/langmem/issues)
+- 💬 **Discussions**: [GitHub Discussions](https://github.com/langmem/langmem/discussions)
+- 📚 **Documentation**: [ReadTheDocs](https://langmem.readthedocs.io)
+- 📧 **Email**: support@langmem.ai
 
 ---
 
-**LangMem** - Bringing human-like memory architecture to AI agents 🧠✨
+**LangMem SDK** - Bringing human-like memory architecture to your AI agents 🧠✨

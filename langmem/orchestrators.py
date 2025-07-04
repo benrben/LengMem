@@ -1,9 +1,9 @@
 from langgraph_wave_orchestrator import WaveOrchestrator
 import logging
 
-from LanggraphMemory.llm import create_llm_openai
-from LanggraphMemory.workers import memory_search_workers, memory_push_workers
-from LanggraphMemory.prompts import (
+from langmem.llm import create_llm_openai
+from langmem.workers import memory_search_workers, memory_push_workers
+from langmem.prompts import (
     SEARCH_PLANNING_PROMPT, SEARCH_ANSWERING_PROMPT,
     LEARN_PLANNING_PROMPT, LEARN_ANSWERING_PROMPT,
     SUPERVISOR_PLANNING_PROMPT, SUPERVISOR_ANSWERING_PROMPT
