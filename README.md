@@ -1,26 +1,26 @@
-# LangMem SDK 🧠
+# LanguageMemory SDK 🧠
 
 **A Python SDK for Layered Memory Architecture with LangGraph**
 
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
-[![PyPI version](https://badge.fury.io/py/langmem.svg)](https://badge.fury.io/py/langmem)
+[![PyPI version](https://badge.fury.io/py/LanguageMemory.svg)](https://badge.fury.io/py/LanguageMemory)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Downloads](https://static.pepy.tech/badge/langmem)](https://pepy.tech/project/langmem)
+[![Downloads](https://static.pepy.tech/badge/LanguageMemory)](https://pepy.tech/project/LanguageMemory)
 
-LangMem is a Python SDK that provides a sophisticated memory architecture for Large Language Model (LLM) agents, implementing multiple types of memory systems that mimic human cognitive architecture. Built on top of LangGraph, it enables AI agents to have human-like memory capabilities including sensory buffer, short-term memory, episodic memory, semantic memory, and more.
+LanguageMemory is a Python SDK that provides a sophisticated memory architecture for Large Language Model (LLM) agents, implementing multiple types of memory systems that mimic human cognitive architecture. Built on top of LangGraph, it enables AI agents to have human-like memory capabilities including sensory buffer, short-term memory, episodic memory, semantic memory, and more.
 
 ## 🚀 Quick Start
 
 ### Installation
 
 ```bash
-pip install langmem
+pip install LanguageMemory
 ```
 
 ### Basic Usage
 
 ```python
-from langmem import LangMemSDK
+from LanguageMemory import LangMemSDK
 
 # Initialize the SDK
 sdk = LangMemSDK()
@@ -78,22 +78,22 @@ sdk.add_memory("Python is a programming language", memory_type="semantic")
 ### Install from PyPI
 
 ```bash
-pip install langmem
+pip install LanguageMemory
 ```
 
 ### Install from Source
 
 ```bash
-git clone https://github.com/langmem/langmem.git
-cd langmem
+git clone https://github.com/LanguageMemory/LanguageMemory.git
+cd LanguageMemory
 pip install -e .
 ```
 
 ### Development Installation
 
 ```bash
-git clone https://github.com/langmem/langmem.git
-cd langmem
+git clone https://github.com/LanguageMemory/LanguageMemory.git
+cd LanguageMemory
 pip install -e ".[dev]"
 ```
 
@@ -125,7 +125,7 @@ MAX_SEARCH_RESULTS=5
 The main SDK class providing high-level access to all memory functionality.
 
 ```python
-from langmem import LangMemSDK
+from LanguageMemory import LangMemSDK
 
 sdk = LangMemSDK()
 ```
@@ -173,7 +173,7 @@ info = sdk.get_memory_info("semantic_memory")
 Create and manage individual vector databases for specific memory types.
 
 ```python
-from langmem import CreateVectorDB
+from LanguageMemory import CreateVectorDB
 
 # Create a custom memory database
 memory = CreateVectorDB(
@@ -194,7 +194,7 @@ results = memory.search("important", k=3)
 Access pre-configured memory databases directly:
 
 ```python
-from langmem import semantic_memory, episodic_memory, short_term_memory
+from LanguageMemory import semantic_memory, episodic_memory, short_term_memory
 
 # Add to semantic memory
 semantic_memory.add_document("Machine learning is a subset of AI")
@@ -225,7 +225,7 @@ recent_results = short_term_memory.search("current task")
 ### Basic Memory Operations
 
 ```python
-from langmem import LangMemSDK
+from LanguageMemory import LangMemSDK
 
 sdk = LangMemSDK()
 
@@ -247,7 +247,7 @@ experiences = sdk.search_memory("team meeting", memory_type="episodic")
 ### Advanced Usage with Custom Memory
 
 ```python
-from langmem import CreateVectorDB
+from LanguageMemory import CreateVectorDB
 import json
 
 # Create a specialized memory for a specific domain
@@ -278,7 +278,7 @@ for result in results:
 ### Integration with LangGraph
 
 ```python
-from langmem import brain_graph
+from LanguageMemory import brain_graph
 from langchain_core.messages import HumanMessage
 
 # Use the brain graph directly
@@ -293,7 +293,7 @@ print(response)
 
 ```python
 import asyncio
-from langmem import LangMemSDK
+from LanguageMemory import LangMemSDK
 
 async def process_multiple_messages():
     sdk = LangMemSDK()
@@ -315,41 +315,41 @@ asyncio.run(process_multiple_messages())
 
 ## 🖥️ CLI Usage
 
-LangMem provides a command-line interface for easy interaction:
+LanguageMemory provides a command-line interface for easy interaction:
 
 ### Basic Commands
 
 ```bash
 # Show version
-langmem --version
+LanguageMemory --version
 
 # Process a message
-langmem process "Remember that I like coffee"
+LanguageMemory process "Remember that I like coffee"
 
 # Search memory
-langmem search "coffee" --memory personalization --limit 3
+LanguageMemory search "coffee" --memory personalization --limit 3
 
 # Add to memory
-langmem add "Python is a programming language" --memory semantic
+LanguageMemory add "Python is a programming language" --memory semantic
 
 # List all memory types
-langmem list-memories
+LanguageMemory list-memories
 
 # Get memory type information
-langmem info semantic_memory
+LanguageMemory info semantic_memory
 ```
 
 ### Advanced CLI Usage
 
 ```bash
 # Add with metadata
-langmem add "Important project update" --memory episodic --metadata '{"priority": "high", "date": "2024-01-15"}'
+LanguageMemory add "Important project update" --memory episodic --metadata '{"priority": "high", "date": "2024-01-15"}'
 
 # Search specific memory type
-langmem search "project" --memory episodic --limit 5
+LanguageMemory search "project" --memory episodic --limit 5
 
 # Get detailed memory information
-langmem info procedural_memory
+LanguageMemory info procedural_memory
 ```
 
 ## 🔧 Configuration
@@ -369,7 +369,7 @@ langmem info procedural_memory
 ### Custom Configuration
 
 ```python
-from langmem import CreateVectorDB
+from LanguageMemory import CreateVectorDB
 import os
 
 # Override environment variables
@@ -391,8 +391,8 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 ### Development Setup
 
 ```bash
-git clone https://github.com/langmem/langmem.git
-cd langmem
+git clone https://github.com/LanguageMemory/LanguageMemory.git
+cd LanguageMemory
 pip install -e ".[dev]"
 ```
 
@@ -405,9 +405,9 @@ pytest
 ### Code Quality
 
 ```bash
-black langmem/
-ruff check langmem/
-mypy langmem/
+black LanguageMemory/
+ruff check LanguageMemory/
+mypy LanguageMemory/
 ```
 
 ## 📄 License
@@ -423,11 +423,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-- 🐛 **Issues**: [GitHub Issues](https://github.com/langmem/langmem/issues)
-- 💬 **Discussions**: [GitHub Discussions](https://github.com/langmem/langmem/discussions)
-- 📚 **Documentation**: [ReadTheDocs](https://langmem.readthedocs.io)
-- 📧 **Email**: support@langmem.ai
+- 🐛 **Issues**: [GitHub Issues](https://github.com/LanguageMemory/LanguageMemory/issues)
+- 💬 **Discussions**: [GitHub Discussions](https://github.com/LanguageMemory/LanguageMemory/discussions)
+- 📚 **Documentation**: [ReadTheDocs](https://languagememory.readthedocs.io)
+- 📧 **Email**: support@languagememory.ai
 
 ---
 
-**LangMem SDK** - Bringing human-like memory architecture to your AI agents 🧠✨
+**LanguageMemory SDK** - Bringing human-like memory architecture to your AI agents 🧠✨

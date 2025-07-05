@@ -1,14 +1,14 @@
 """
-LangMem - A Python SDK for Layered Memory Architecture with LangGraph
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+LanguageMemory - A Python SDK for Layered Memory Architecture with LangGraph
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-LangMem provides a comprehensive memory architecture for LLM agents that mimics
+LanguageMemory provides a comprehensive memory architecture for LLM agents that mimics
 human cognitive memory systems. Built on top of LangGraph, it offers sophisticated
 memory management capabilities including sensory buffer, short-term memory,
 episodic memory, semantic memory, and more.
 
 Basic Usage:
-    >>> from langmem import LangMemSDK, CreateVectorDB
+    >>> from LanguageMemory import LangMemSDK, CreateVectorDB
     >>> 
     >>> # Initialize the SDK
     >>> sdk = LangMemSDK()
@@ -23,7 +23,7 @@ Basic Usage:
     >>> memory.add_document("Important information")
     >>> results = memory.search("information")
 
-:copyright: (c) 2024 LangMem Contributors
+:copyright: (c) 2024 LanguageMemory Contributors
 :license: MIT, see LICENSE for more details.
 """
 
@@ -80,10 +80,10 @@ from .workers import (
 
 class LangMemSDK:
     """
-    Main SDK class providing a high-level interface to LangMem functionality.
+    Main SDK class providing a high-level interface to LanguageMemory functionality.
     
     This class provides convenient access to all memory systems and orchestration
-    capabilities of LangMem.
+    capabilities of LanguageMemory.
     
     Example:
         >>> sdk = LangMemSDK()
@@ -96,7 +96,7 @@ class LangMemSDK:
     """
     
     def __init__(self):
-        """Initialize the LangMem SDK with default configuration."""
+        """Initialize the LanguageMemory SDK with default configuration."""
         self.brain = brain_graph
         self.memory_dbs = {
             "sensory_buffer": sensory_buffer,

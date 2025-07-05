@@ -2,7 +2,7 @@
   "dependencies": ["."],
   "graphs": {
     "brain": {
-      "path": "./langmem/brain.py:graph"
+      "path": "./LanguageMemory/brain.py:graph"
     }
   },
   "env": ".env"

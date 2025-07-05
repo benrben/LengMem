@@ -9,7 +9,7 @@ import sys
 import os
 from typing import Optional
 
-from langmem import LangMemSDK, __version__
+from LanguageMemory import LangMemSDK, __version__
 
 
 def create_parser() -> argparse.ArgumentParser:

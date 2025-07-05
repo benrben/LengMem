@@ -1,13 +1,13 @@
 [project]
-name = "langmem"
+name = "LanguageMemory"
 version = "1.0.3"
 description = "A Python SDK for Layered Memory Architecture with LangGraph - Human-like Memory for AI Agents"
 readme = "README.md"
 authors = [
-    {name = "LangMem Contributors", email = "support@langmem.ai"}
+    {name = "LanguageMemory Contributors", email = "support@languagememory.ai"}
 ]
 maintainers = [
-    {name = "LangMem Contributors", email = "support@langmem.ai"}
+    {name = "LanguageMemory Contributors", email = "support@languagememory.ai"}
 ]
 license = {text = "MIT"}
 keywords = ["langchain", "langgraph", "memory", "ai", "llm", "agents", "vector-database", "cognitive-architecture"]
@@ -50,11 +50,11 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/langmem/langmem"
-Documentation = "https://langmem.readthedocs.io"
-Repository = "https://github.com/langmem/langmem"
-Issues = "https://github.com/langmem/langmem/issues"
-Changelog = "https://github.com/langmem/langmem/releases"
+Homepage = "https://github.com/LanguageMemory/LanguageMemory"
+Documentation = "https://languagememory.readthedocs.io"
+Repository = "https://github.com/LanguageMemory/LanguageMemory"
+Issues = "https://github.com/LanguageMemory/LanguageMemory/issues"
+Changelog = "https://github.com/LanguageMemory/LanguageMemory/releases"
 
 [project.optional-dependencies]
 dev = [
@@ -82,7 +82,7 @@ production = [
 
 # Entry points for CLI tools
 [project.scripts]
-langmem = "langmem.cli:main"
+LanguageMemory = "LanguageMemory.cli:main"
 
 [build-system]
 requires = ["hatchling"]
@@ -140,11 +140,11 @@ warn_unused_ignores = true
 show_error_codes = true
 
 [tool.hatch.build.targets.wheel]
-packages = ["langmem"]
+packages = ["LanguageMemory"]
 
 [tool.hatch.build.targets.sdist]
 include = [
-    "/langmem",
+    "/LanguageMemory",
     "/README.md",
     "/LICENSE",
     "/pyproject.toml",

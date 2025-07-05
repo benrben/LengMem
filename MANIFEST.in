@@ -3,15 +3,15 @@ include LICENSE
 include CONTRIBUTING.md
 include pyproject.toml
 include setup.py
-include langmem/py.typed
+include LanguageMemory/py.typed
 
 # Include examples
 recursive-include examples *.py
 recursive-include examples *.md
 
 # Include package data
-recursive-include langmem *.py
-recursive-include langmem *.pyi
+recursive-include LanguageMemory *.py
+recursive-include LanguageMemory *.pyi
 
 # Exclude development files
 exclude .env

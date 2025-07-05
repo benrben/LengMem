@@ -1,6 +1,6 @@
-# Contributing to LangMem SDK
+# Contributing to LanguageMemory SDK
 
-Thank you for your interest in contributing to LangMem SDK! This guide will help you get started with contributing to our project.
+Thank you for your interest in contributing to LanguageMemory SDK! This guide will help you get started with contributing to our project.
 
 ## 📋 Table of Contents
 
@@ -22,13 +22,13 @@ This project adheres to a code of conduct that promotes a welcoming and inclusiv
 1. **Fork the repository** on GitHub
 2. **Clone your fork** locally:
    ```bash
-   git clone https://github.com/your-username/langmem.git
-   cd langmem
+   git clone https://github.com/your-username/LanguageMemory.git
+   cd LanguageMemory
    ```
 
 3. **Add the original repository as upstream**:
    ```bash
-   git remote add upstream https://github.com/langmem/langmem.git
+   git remote add upstream https://github.com/LanguageMemory/LanguageMemory.git
    ```
 
 ## 🛠️ Development Setup
@@ -86,9 +86,9 @@ Example: `feature/add-temporal-memory-support`
 
 4. **Lint your code**:
    ```bash
-   black langmem/
-   ruff check langmem/
-   mypy langmem/
+   black LanguageMemory/
+   ruff check LanguageMemory/
+   mypy LanguageMemory/
    ```
 
 5. **Commit your changes**:
@@ -108,7 +108,7 @@ pytest
 pytest tests/test_memory.py
 
 # Run with coverage
-pytest --cov=langmem --cov-report=html
+pytest --cov=LanguageMemory --cov-report=html
 ```
 
 ### Writing Tests
@@ -283,7 +283,7 @@ docs: update API reference for new memory types
 
 - **GitHub Issues**: For bug reports and feature requests
 - **GitHub Discussions**: For questions and community discussions
-- **Email**: dev@langmem.ai for private inquiries
+- **Email**: dev@languagememory.ai for private inquiries
 
 ## 🙏 Recognition
 
@@ -292,4 +292,4 @@ Contributors are recognized in:
 - Release notes
 - GitHub contributor graphs
 
-Thank you for contributing to LangMem SDK! 🧠✨ 
+Thank you for contributing to LanguageMemory SDK! 🧠✨ 

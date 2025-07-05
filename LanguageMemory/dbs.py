@@ -1,4 +1,4 @@
-from langmem.vectorDB import CreateVectorDB
+from LanguageMemory.vectorDB import CreateVectorDB
 
 # Memory database configurations
 MEMORY_CONFIGS = {

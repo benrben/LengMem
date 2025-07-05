@@ -1,21 +1,21 @@
 #!/usr/bin/env python3
 """
-Basic usage example for LangMem SDK
+Basic usage example for LanguageMemory SDK
 
-This example demonstrates the core functionality of the LangMem SDK
+This example demonstrates the core functionality of the LanguageMemory SDK
 including memory storage, retrieval, and processing.
 """
 
 import os
-from langmem import LangMemSDK
+from LanguageMemory import LangMemSDK
 
 def main():
     """Main example function."""
-    print("🧠 LangMem SDK Basic Usage Example")
+    print("🧠 LanguageMemory SDK Basic Usage Example")
     print("=" * 40)
     
     # Initialize the SDK
-    print("\n1. Initializing LangMem SDK...")
+    print("\n1. Initializing LanguageMemory SDK...")
     sdk = LangMemSDK()
     
     # Check available memory types
@@ -36,7 +36,7 @@ def main():
     sdk.add_memory("I enjoy working with Python and AI", memory_type="personalization_memory")
     
     # Add to episodic memory (experiences)
-    sdk.add_memory("Today I learned about the LangMem SDK", memory_type="episodic_memory")
+    sdk.add_memory("Today I learned about the LanguageMemory SDK", memory_type="episodic_memory")
     
     print("   ✅ Information added to semantic, personalization, and episodic memory")
     
@@ -80,7 +80,7 @@ def main():
     print("\nNext steps:")
     print("   - Set up your OpenAI API key in .env file")
     print("   - Explore different memory types")
-    print("   - Try the CLI: langmem --help")
+    print("   - Try the CLI: LanguageMemory --help")
 
 if __name__ == "__main__":
     main() 
